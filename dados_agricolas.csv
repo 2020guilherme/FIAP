@@ -1,0 +1,4 @@
+nome,cultura,formato,comprimento,largura,base_menor,base_maior,altura,media_bases,espaco_ruas,qtde_ruas,comprimento_ruas,area_m2
+[Fazenda Boa Vista] Área 1,Soja,Retângulo,4232.0,3233.0,,,,,0.6,5388,22802016.0,13682056.0
+[Fazenda Boa Vista] Área 2,Soja,Retângulo,3000.0,2000.0,,,,,0.5,4000,12000000.0,6000000.0
+[Fazenda Boa Vista] Area 3,Milho,Trapézio,,,4324.0,10000.0,3293.0,7162.0,0.7,4704,33690048.0,23584466.0
