@@ -47,7 +47,8 @@ def main():
         print("[1] Gerenciar Plantios (Cadastrar, Ver, Editar, Excluir)")
         print("[2] Calcular Insumos")
         print("[3] Análise Estatística")
-        print("[4] Sair")
+        print("[4] Consultar Previsão do Tempo")
+        print("[5] Sair")
         
         while True:
             try:
@@ -63,6 +64,8 @@ def main():
         elif opcao == 3:
             analisar_e_exibir_dados()
         elif opcao == 4:
+            consultar_previsao_tempo_r()
+        elif opcao == 5:
             print("Saindo do programa. Obrigado por usar o FarmTech Solutions!")
             break
         else:
@@ -347,6 +350,30 @@ def analisar_e_exibir_dados():
         print(f"\n{resultado.stdout}")
     except FileNotFoundError:
         print("Erro: Rscript não foi encontrado. Verifique se o caminho está correto.")
+    except subprocess.CalledProcessError as e:
+        print(f"Erro ao executar o script R: {e}")
+        print(e.stderr)
+
+    input("Pressione Enter para voltar ao menu principal.")
+
+def consultar_previsao_tempo_r():
+    print("\n--- Consultando Previsão do Tempo (via R) ---")
+    
+    caminho_rscript = "C:\\Program Files\\R\\R-4.5.1\\bin\\Rscript.exe"
+    caminho_script_r = os.path.abspath("api_clima.R")
+    
+    try:
+        resultado = subprocess.run(
+            [caminho_rscript, caminho_script_r],
+            capture_output=True,
+            text=True,
+            encoding="utf-8",
+            check=True
+        )
+        print(f"\n{resultado.stdout}")
+    except FileNotFoundError:
+        print(f"Erro: O executável do Rscript não foi encontrado em '{caminho_rscript}'.")
+        print("Verifique se o caminho está correto ou se o R está instalado.")
     except subprocess.CalledProcessError as e:
         print(f"Erro ao executar o script R: {e}")
         print(e.stderr)
